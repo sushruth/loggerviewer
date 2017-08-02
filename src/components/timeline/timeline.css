@@ -1,0 +1,45 @@
+.timeline {
+	padding:30px 50px;
+	position: relative;
+}
+
+.timeline > div {
+	position: relative;
+	margin:20px 0;
+}
+
+.timeline > div:first-child {
+	margin-top:0;
+}
+
+.timeline > div::before {
+	content:'';
+	height:calc(100% + 20px);
+	position:absolute;
+	left:-24px;
+	width:2px;
+	background:#8098b7;
+	z-index: 1;
+}
+
+.timeline > div::after {
+	content:'';
+	height:100%;
+	position:absolute;
+	left:-30px;
+	top:calc(20px + 0.5em - 15px);
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	border:2px solid #8098b7;
+	background:#fff;
+	z-index: 2;
+}
+
+.timeline > div:first-child::before {
+	top:24px;
+}
+
+.timeline > div:last-child::before {
+	bottom:calc(100% - 0.5em - 15px);
+}

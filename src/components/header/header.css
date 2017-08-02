@@ -1,0 +1,27 @@
+.title {
+	font-weight: normal;
+	margin:0 0 10px;
+	padding:10px;
+	border-bottom:1px solid #ddd;
+}
+
+.top {
+	padding-left: 30px;
+}
+
+.logo img {
+	height:52px;
+}
+
+.desc {
+	color:#999;
+	padding:0 10px 10px 10px;
+	font-size: 0.8em;
+}
+
+.filtersAndIcons {
+	align-self: stretch;
+	align-content: center;
+	text-align: right;
+	padding-right:30px;
+}

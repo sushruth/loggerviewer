@@ -1,0 +1,17 @@
+.dropBox {
+	margin:50px;
+	border:3px dashed #ddd;
+	padding:20px;
+	height:300px;
+	text-align: center;
+	font-size:2em;
+	border-radius: 20px;
+}
+
+.dropArea div {
+	font-size: 0.6em;
+}
+
+.dropInput {
+	display: none;
+}

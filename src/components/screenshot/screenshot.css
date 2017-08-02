@@ -1,0 +1,14 @@
+.screenshot {
+	width:100%;
+	background: #fff;
+	padding:5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	border-radius:5px;
+	line-height: 0;
+}
+
+.screenshot img {
+	width:100%;
+	border-radius:3px;
+	
+}

@@ -1,0 +1,131 @@
+.responseBody .json, .requestBody .json {
+	height:300px;
+}
+
+.responseBody, .requestBody {
+	position:relative;
+	min-height:50px;
+	max-height:300px;
+}
+
+.requestBody {
+	padding-right:5px;
+}
+
+.eesTitle {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+
+.copy {
+	position: absolute;
+	top:10px;
+	right: 20px;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.copy:hover {
+	opacity: 1;
+}
+
+.copy img {
+	height:20px;
+}
+
+.responseBox, .requestBox {
+	width:50%;
+}
+
+.networkcall {
+	overflow: hidden;
+	background:#fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	border-radius:5px;
+}
+
+.topLeft {
+	padding:10px;
+	padding-right: 0;
+}
+
+.networkcall.error {
+	border: 3px solid red;
+}
+
+.networkcall .method {
+	font-size: 0.75em;
+	letter-spacing: 0.1em;
+	padding:5px 13px;
+	border-radius: 3px;
+	background:#54e3e5;
+	color:#000;
+	margin-left:10px;
+}
+
+.urlPart {
+	font-family: monospace;
+	font-size:0.8em;
+	padding:3px 5px;
+	background:#eee;
+	border-radius: 3px;
+	margin-right: 10px;
+}
+
+.urlPart.https {
+	background: #fffbbf;
+}
+
+.urlPart.hostname {
+	background:#888;
+	color:#fff;
+}
+
+.endpoint {
+	color:red;
+}
+
+.statusGreen {
+	background: #b0f2c0;
+}
+
+.statusNone {
+	background:#efefef;
+}
+
+.statusRed {
+	background: #ad2d2d;
+	color:#fff;
+}
+
+.callRight {
+	align-self: stretch;
+}
+
+.callRight .urlPart {
+	margin:0;
+}
+
+.dropdown {
+	background:0;
+	padding:0;
+	align-self: center;
+	padding:13px 15px;
+	margin:0;
+	cursor: pointer;
+}
+
+.dropdown img {
+	height:0.9em;
+	margin-bottom:-0.2em;
+}
+
+.expandedCall {
+	margin:0 5px;
+	background:#ddd;
+	padding:7px 10px;
+	font-size: 0.8em;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}

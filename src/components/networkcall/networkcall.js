@@ -3,7 +3,7 @@ import Highlight from 'react-highlight';
 import ReactDOM from 'react-dom'
 import './networkcall.css';
 
-import { getIfExists } from '../index';
+import { getIfExists, Tuple } from '../index';
 
 let endpointUrl = (pathname, endpoint) => {
 	return (
@@ -51,9 +51,9 @@ export const NetworkCall = class NetworkCall extends Component {
 		let range = document.createRange();
 		let selection = window.getSelection();
 		range.selectNodeContents(node);
-        selection.removeAllRanges();
+		selection.removeAllRanges();
 		selection.addRange(range);
-		
+
 		try {
 			document.execCommand('copy');
 		} catch (err) {
@@ -61,6 +61,16 @@ export const NetworkCall = class NetworkCall extends Component {
 		}
 
 		window.getSelection().removeAllRanges();
+	}
+
+	getTuple(dataArray, filter) {
+		return dataArray.map((query, index) => {
+			if(!!filter && !!query.name.match(filter)) { return '' }
+			return (
+				<Tuple className="item" property={query.name} value={query.value} key={index} />
+			);
+			
+		})
 	}
 
 	render() {
@@ -81,12 +91,23 @@ export const NetworkCall = class NetworkCall extends Component {
 
 		let expandedSection = '';
 
+		let queryString = this.getTuple(this.props.call.request.queryString);
+
+		// let requestHeaders = this.getTuple(this.props.call.request.headers,  /(cookie|:path)/g);
+		// let requestCookies = this.getTuple(this.props.call.request.cookies);
+
+		// let responseHeaders = this.getTuple(this.props.call.response.headers, /(cookie|:path)/g);
+		// let responseCookies = this.getTuple(this.props.call.response.cookies);
+
 		if (this.state.expanded) {
 			expandedSection = (
 				<div className="expandedCall flex col">
 					<div className="item shrink">
 						<div className="eesTitle">
 							Query string
+						</div>
+						<div className="tupleContainer flex">
+							{queryString}
 						</div>
 					</div>
 					<div className="item flex">
@@ -98,14 +119,24 @@ export const NetworkCall = class NetworkCall extends Component {
 								<div className="copy" onClick={e => this.copyData(e, this.requestText)}><img src={require('./../../assets/images/copy.png')} alt="" /></div>
 								<Highlight className="json" ref={(requestText) => { this.requestText = requestText; }}>{requestBody}</Highlight>
 							</div>
-							<div className="flex">
+							{/* <div className="flex">
 								<div className="item">
-									Headers
+									<div className="eesTitle">
+										Headers
+									</div>
+									<div className="flex col">
+										{requestHeaders}
+									</div>
 								</div>
 								<div className="item">
-									Cookies
+									<div className="eesTitle">
+										Cookies
+									</div>
+									<div className="flex col">
+										{requestCookies}
+									</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 						<div className="item responseBox">
 							<div className="eesTitle">
@@ -115,14 +146,24 @@ export const NetworkCall = class NetworkCall extends Component {
 								<div className="copy" onClick={e => this.copyData(e, this.responseText)}><img src={require('./../../assets/images/copy.png')} alt="" /></div>
 								<Highlight className="json" ref={(responseText) => { this.responseText = responseText; }}>{responseBody}</Highlight>
 							</div>
-							<div className="flex">
+							{/* <div className="flex">
 								<div className="item">
-									Headers
+									<div className="eesTitle">
+										Headers
+									</div>
+									<div className="flex col">
+										{responseHeaders}
+									</div>
 								</div>
 								<div className="item">
-									Cookies
+									<div className="eesTitle">
+										Cookies
+									</div>
+									<div className="flex col">
+										{responseCookies}
+									</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>

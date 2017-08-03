@@ -1,0 +1,19 @@
+.tuple {
+	width:auto;
+	background:#fff;
+	display: inline-block;	
+	margin:3px;
+	border-radius: 3px;
+	align-content: flex-start;
+	overflow: hidden;
+	font-family: monospace;
+}
+
+.tuple  > div {
+	display: inline-block;
+	padding:3px 6px;
+}
+
+.tuple .property {
+	background:#ccc;
+}

@@ -1,13 +1,19 @@
 import { observable } from 'mobx';
-import {getIfExists} from '../components';
+import { getIfExists } from '../components';
 
 export const Store = observable({
 	imageStore: new Map(),
 	logStore: {},
 	logStoreIsSet: false,
 	logFilters: {
-		hosts: []
-	}
+		hostlist: [],
+		hosts: [
+			{
+				host: '',
+				enabled: false
+			}
+		]
+	},
 });
 
 Store.pushImage = (key, data) => {
@@ -17,8 +23,15 @@ Store.pushImage = (key, data) => {
 Store.setLogStore = (logString) => {
 	Store.logStore = JSON.parse(logString).map((entry) => {
 		entry.enabled = true;
-		if(getIfExists(entry, 'request.url')) {
+		if (getIfExists(entry, 'request.url')) {
 			entry.request.url = new URL(entry.request.url);
+			if (!Store.logFilters.hostlist.includes(entry.request.url.hostname)) {
+				Store.logFilters.hostlist.push(entry.request.url.hostname);
+				Store.logFilters.hosts.push({
+					host: entry.request.url.hostname,
+					enabled: false
+				});
+			}
 		}
 		return entry;
 	});
@@ -39,15 +52,24 @@ let sortByTimestamp = (a, b) => {
 
 Store.getSortedLog = () => {
 	let logData = Store.logStore;
-	// logData.sort(sortByTimestamp);
+	Array.from(logData).sort(sortByTimestamp);
 	return logData;
 };
 
-Store.isHostAllowed = function(host) {
-	if(Store.logFilters.hosts.includes(host)) {
+Store.enableHosts = function(hostList) {
+	debugger
+	hostList.forEach(function(host) {
+		Store.logFilters.hosts.forEach((v, i) => {
+			if(v.host === host) {
+				Store.logFilters.hosts[i].enabled = true;
+			}
+		})
+	});
+};
+
+Store.isHostAllowed = function (host) {
+	if (Store.logFilters.hosts.filter(v => (v.host === host && v.enabled))) {
 		return true;
-	} else if(Store.logFilters.hosts.length === 0) {
-		return true
 	} else {
 		return false;
 	}

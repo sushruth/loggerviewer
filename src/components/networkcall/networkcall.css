@@ -9,13 +9,19 @@
 }
 
 .requestBody {
-	padding-right:5px;
+	padding-right:1px;
+	margin-left: -10px;
+}
+
+.responseBody {
+	margin-right: -10px;
 }
 
 .eesTitle {
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 0.8em;
+	padding:5px;
 }
 
 .copy {
@@ -128,4 +134,11 @@
 	font-size: 0.8em;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+
+.tupleContainer {
+	padding:5px;
+	margin:5px;
+	flex-wrap: wrap;
+	align-items: stretch
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import { Store } from '../index'
+import { Store, Filters } from '../index'
 
 import './header.css';
 
@@ -17,7 +17,7 @@ export const Header = observer(class Header extends Component {
 				</div>
 				{Store.logStoreIsSet ? <div className="item filtersAndIcons flex center">
 					<div className="item">
-						Filters here
+						<Filters />
 					</div>
 				</div> : ''}
 			</div>

@@ -57,18 +57,19 @@ Store.getSortedLog = () => {
 };
 
 Store.enableHosts = function(hostList) {
-	debugger
 	hostList.forEach(function(host) {
 		Store.logFilters.hosts.forEach((v, i) => {
 			if(v.host === host) {
 				Store.logFilters.hosts[i].enabled = true;
+			} else {
+				Store.logFilters.hosts[i].enabled = false;				
 			}
 		})
 	});
 };
 
 Store.isHostAllowed = function (host) {
-	if (Store.logFilters.hosts.filter(v => (v.host === host && v.enabled))) {
+	if (Store.logFilters.hosts.filter(v => (v.host === host && v.enabled)).length > 0) {
 		return true;
 	} else {
 		return false;

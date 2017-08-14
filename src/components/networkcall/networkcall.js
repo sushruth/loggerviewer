@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Highlight from 'react-highlight';
+import { observer } from 'mobx-react'
 import ReactDOM from 'react-dom'
 import './networkcall.css';
 
@@ -11,7 +12,7 @@ let endpointUrl = (pathname, endpoint) => {
 	)
 }
 
-export const NetworkCall = class NetworkCall extends Component {
+export const NetworkCall = observer(class NetworkCall extends Component {
 
 	constructor(props) {
 		super(props);
@@ -65,11 +66,11 @@ export const NetworkCall = class NetworkCall extends Component {
 
 	getTuple(dataArray, filter) {
 		return dataArray.map((query, index) => {
-			if(!!filter && !!query.name.match(filter)) { return '' }
+			if (!!filter && !!query.name.match(filter)) { return '' }
 			return (
 				<Tuple className="item" property={query.name} value={query.value} key={index} />
 			);
-			
+
 		})
 	}
 
@@ -192,4 +193,4 @@ export const NetworkCall = class NetworkCall extends Component {
 			</div>
 		);
 	}
-};
+});

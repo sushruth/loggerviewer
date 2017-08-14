@@ -4,7 +4,6 @@ import { Store } from '../'
 export class Filters extends Component {
 
 	handleChange(e) {
-		debugger
 		var options = e.target.options;
 		var values = [];
 		for (var i = 0, l = options.length; i < l; i++) {

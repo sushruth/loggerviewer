@@ -5,6 +5,11 @@
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	border-radius:5px;
 	line-height: 0;
+	margin:20px 0;
+}
+
+.screenshot.open {
+	width:100%;
 }
 
 .screenshot img {

@@ -1,0 +1,18 @@
+select {
+	background: none;
+	border: 0;
+	overflow: hidden;
+}
+
+select:focus {
+	outline: none;
+}
+
+select > option {
+	margin:5px 0;
+	padding:5px 10px;
+}
+
+select > option:checked {
+	background:yellow;
+}

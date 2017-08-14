@@ -56,22 +56,24 @@ Store.getSortedLog = () => {
 	return logData;
 };
 
-Store.enableHosts = function(hostList) {
-	// hostList.forEach(function(host) {
-		Store.logFilters.hosts.forEach((v, i) => {
-			if(hostList.includes(v.host)) {
-				Store.logFilters.hosts[i].enabled = true;
-			} else {
-				Store.logFilters.hosts[i].enabled = false;				
-			}
-		})
-	// });
+Store.enableHosts = function (hostList) {
+	Store.logFilters.hosts.forEach((v, i) => {
+		if (hostList.includes(v.host)) {
+			Store.logFilters.hosts[i].enabled = true;
+		} else {
+			Store.logFilters.hosts[i].enabled = false;
+		}
+	});
 };
 
 Store.isHostAllowed = function (host) {
-	if (Store.logFilters.hosts.filter(v => (v.host === host && v.enabled)).length > 0) {
-		return true;
+	if (Store.logFilters.hosts.filter(v => v.enabled).length > 0) {
+		if (Store.logFilters.hosts.filter(v => (v.host === host && v.enabled)).length > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	} else {
-		return false;
+		return true;
 	}
 }

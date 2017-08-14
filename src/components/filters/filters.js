@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Store } from '../'
 
+import './filters.css'
+
 export class Filters extends Component {
 
 	handleChange(e) {
@@ -11,7 +13,6 @@ export class Filters extends Component {
 				values.push(options[i].value);
 			}
 		}
-		console.log(values);
 		Store.enableHosts(values);
 	}
 

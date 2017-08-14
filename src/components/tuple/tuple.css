@@ -2,8 +2,8 @@
 	width:auto;
 	background:#fff;
 	display: inline-block;	
-	margin:3px;
-	border-radius: 3px;
+	margin: -1px;
+	border: 1px solid black;
 	align-content: flex-start;
 	overflow: hidden;
 	font-family: monospace;
@@ -16,5 +16,5 @@
 }
 
 .tuple .property {
-	background:#ccc;
+	background:#baeeba7a;
 }

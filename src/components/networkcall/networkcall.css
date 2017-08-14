@@ -1,20 +1,19 @@
 .responseBody .json, .requestBody .json {
-	height:300px;
+	height:150px;
 }
 
 .responseBody, .requestBody {
 	position:relative;
 	min-height:50px;
-	max-height:300px;
+	max-height:150px;
 }
 
 .requestBody {
 	padding-right:1px;
-	margin-left: -10px;
 }
 
 .responseBody {
-	margin-right: -10px;
+
 }
 
 .eesTitle {
@@ -22,6 +21,8 @@
 	font-weight: bold;
 	font-size: 0.8em;
 	padding:5px;
+	color: #444;
+	background: #e5e9ef;
 }
 
 .copy {
@@ -47,8 +48,9 @@
 .networkcall {
 	overflow: hidden;
 	background:#fff;
-	box-shadow: 0 0 10px rgba(0,0,0,0.1);
-	border-radius:5px;
+	/* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+	/* border-radius:5px; */
+	border-bottom: 1px solid #efefef;
 }
 
 .topLeft {
@@ -130,15 +132,14 @@
 .expandedCall {
 	margin:0 5px;
 	background:#ddd;
-	padding:7px 10px;
 	font-size: 0.8em;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	margin-bottom:20px;
 }
 
 .tupleContainer {
-	padding:5px;
-	margin:5px;
 	flex-wrap: wrap;
-	align-items: stretch
+	align-items: stretch;
+	margin: 1px 0;
 }

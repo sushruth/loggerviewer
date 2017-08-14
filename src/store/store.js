@@ -61,6 +61,8 @@ Store.enableHosts = function(hostList) {
 		Store.logFilters.hosts.forEach((v, i) => {
 			if(hostList.includes(v.host)) {
 				Store.logFilters.hosts[i].enabled = true;
+			} else {
+				Store.logFilters.hosts[i].enabled = false;				
 			}
 		})
 	// });

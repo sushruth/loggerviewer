@@ -41,4 +41,5 @@
 
 .timeline > div:last-child::before {
 	bottom:calc(100% - 0.5em - 15px);
+	height: 40px;
 }

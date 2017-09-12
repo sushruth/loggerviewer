@@ -1,13 +1,15 @@
 .tuple {
-	width:auto;
-	background:#fff;
-	display: inline-block;	
-	margin: -1px;
-	border: 1px solid black;
+width: auto;
+	background: #B1F5B7;
+	display: inline-block;
+	border: 1px solid #000;
+	margin-top:-1px;
+	margin-right:-1px;
+	-ms-flex-line-pack: start;
 	align-content: flex-start;
-	overflow: hidden;
-	font-family: monospace;
-	color:#444;
+	font-family: 'Droid Sans Mono', monospace;
+	font-size:0.85em;
+	color: #222222;
 }
 
 .tuple  > div {
@@ -16,5 +18,7 @@
 }
 
 .tuple .property {
-	background:#baeeba7a;
+	background:rgb(67, 60, 107);
+	position: relative;
+	color:#fff;
 }

@@ -9,6 +9,7 @@ export const DropBox = class DropBox extends Component {
 		super(props);
 		this.clickFile = this.clickFile.bind(this);
 		this.inputOnClick = this.inputOnClick.bind(this);
+		this.onDropHandler = this.onDropHandler.bind(this);
 	}
 
 	clickFile() {
@@ -39,15 +40,37 @@ export const DropBox = class DropBox extends Component {
 			});
 	}
 
-	inputOnClick(evt) {
-		Array.from(evt.target.files).forEach(f => this.handleFile(f))
+	onDropHandler(e) {
+		var dt = e.dataTransfer;
+		if (dt.items) {
+			// Use DataTransferItemList interface to access the file(s)
+			for (let i = 0; i < dt.items.length; i++) {
+				if (dt.items[i].kind === "file") {
+					var f = dt.items[i].getAsFile();
+					this.handleFile(f);
+					break;
+				}
+			}
+		} else {
+			// Use DataTransfer interface to access the file(s)
+			for (let i = 0; i < dt.files.length; i++) {
+				console.log("... file[" + i + "].name = " + dt.files[i].name);
+				this.handleFile(dt.files[i]);
+				break;
+			}
+		}
+		e.preventDefault();
+	}
+
+	inputOnClick(e) {
+		Array.from(e.target.files).forEach(f => this.handleFile(f))
 	}
 
 	render() {
 		let element;
-		if(this.props.displayType === 'full') {
+		if (this.props.displayType === 'full') {
 			element = (
-				<div className="dropBox flex center" onClick={this.clickFile}>
+				<div className="dropBox flex center" onClick={this.clickFile} onDrop={this.onDropHandler} onDragOver={(e) => { e.preventDefault(); }}>
 					<div className="dropArea">
 						Drop the file here
 						<div>or click here to select the file</div>
